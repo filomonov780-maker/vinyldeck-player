@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VinylDeck Player</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+</head>
+<body>
+  <div class="window-frame">
+    <div class="player-side" id="player-side">
+      <div class="top-info">
+        <div class="now">NOW PLAYING</div>
+        <div class="album" id="album-tag">Аудиоколлекция</div>
+      </div>
+
+      <!-- Блок фильтров -->
+      <div class="filters-box">
+        <select id="filter-artist" onchange="applyFilters()"><option value="">Все исполнители</option></select>
+        <select id="filter-year" onchange="applyFilters()"><option value="">Все года</option></select>
+        <select id="filter-album" onchange="applyFilters()"><option value="">Все альбомы</option></select>
+        <select id="filter-genre" onchange="applyFilters()"><option value="">Все жанры</option></select>
+      </div>
+
+      <div class="cover-box">
+        <img id="main-cover" class="main-cover" src="" alt="">
+      </div>
+
+      <div class="track-meta">
+        <div class="track-title" id="track-title">Выберите ZIP-архив</div>
+        <div class="track-artist" id="track-artist">Исполнитель</div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-bar" id="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="time-labels">
+          <span id="cur-time">00:00</span>
+          <span id="dur-time">00:00</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <label class="zip-btn" for="zip-input">Открыть ZIP</label>
+        <input type="file" id="zip-input" accept=".zip" style="display: none;">
+        
+        <button class="ctrl-btn" onclick="prevTrack()">PREV</button>
+        <button class="ctrl-btn play-btn" id="play-btn" onclick="togglePlay()">PLAY</button>
+        <button class="ctrl-btn" onclick="nextTrack()">NEXT</button>
+      </div>
+
+      <div class="track-counter" id="track-counter">Песня 0 из 0</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
